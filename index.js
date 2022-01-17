@@ -1,7 +1,11 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const cors = require('cors');
+
 const port = process.env.PORT || 3001;
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   console.log('request /');
