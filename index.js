@@ -7,7 +7,7 @@ const port = process.env.PORT || 3001;
 
 app.use(cors());
 
-app.get('/', (req, res) => {
+app.get('/', cors(), (req, res) => {
   console.log('request /');
   res.sendFile(__dirname + '/index.html');
 });
