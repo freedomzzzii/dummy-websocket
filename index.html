@@ -18,8 +18,13 @@
   <body>
     <ul id="messages"></ul>
     <div id="form">
+      <button onclick="welcome()">WELCOME</button>
+      <button onclick="lprIssueIn()">LPR_ISSUE_IN</button>
+      <button onclick="checkParkingStatusPage()">CHECK_PARKING_STATUS_PAGE</button>
       <button onclick="outstandingFee()">OUTSTANDING_FEE</button>
       <button onclick="paymentSuccess()">PAYMENT_SUCCESS</button>
+      <button onclick="paymentFailure()">PAYMENT_FAILURE</button>
+      <button onclick="thankYou()">THANK_YOU</button>
       <!-- TODO: message type -->
     </div>
     <script src="/socket.io/socket.io.js"></script>
@@ -31,12 +36,32 @@
       var form = document.getElementById('form');
       var input = document.getElementById('input');
 
+      function welcome() {
+        socket.emit('chat message', 'WELCOME');
+      }
+
+      function lprIssueIn() {
+        socket.emit('chat message', 'LPR_ISSUE_IN');
+      }
+
+      function checkParkingStatusPage() {
+        socket.emit('chat message', 'CHECK_PARKING_STATUS_PAGE');
+      }
+
       function outstandingFee() {
         socket.emit('chat message', 'OUTSTANDING_FEE');
       }
 
       function paymentSuccess() {
         socket.emit('chat message', 'PAYMENT_SUCCESS');
+      }
+
+      function paymentFailure() {
+        socket.emit('chat message', 'PAYMENT_FAILURE');
+      }
+
+      function thankYou() {
+        socket.emit('chat message', 'THANK_YOU');
       }
 
       // TODO: add function to emit message type
