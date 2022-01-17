@@ -143,17 +143,17 @@ io.on('connection', (socket) => {
     io.emit('chat message', `request message type: ${msg}`);
 
     if (msg === 'WELCOME' ) {
-      io.emit(`/iot/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, WELCOME_MESSAGE);
+      io.emit(`/ws/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, WELCOME_MESSAGE);
       io.emit('chat message', WELCOME_MESSAGE)
     }
 
     if (msg === 'LPR_ISSUE_IN') {
-      io.emit(`/iot/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, LPR_ISSUE_IN_MESSAGE);
+      io.emit(`/ws/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, LPR_ISSUE_IN_MESSAGE);
       io.emit('chat message', LPR_ISSUE_IN_MESSAGE)
     }
 
     if (msg === 'CHECK_PARKING_STATUS_PAGE') {
-      io.emit(`/iot/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, CHECK_PARKING_STATUS_PAGE_MESSAGE);
+      io.emit(`/ws/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, CHECK_PARKING_STATUS_PAGE_MESSAGE);
       io.emit('chat message', CHECK_PARKING_STATUS_PAGE_MESSAGE)
     }
 
@@ -163,17 +163,17 @@ io.on('connection', (socket) => {
     }
 
     if (msg === 'PAYMENT_SUCCESS') {
-      io.emit(`/iot/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, PAYMENT_SUCCESS_MESSAGE);
+      io.emit(`/ws/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, PAYMENT_SUCCESS_MESSAGE);
       io.emit('chat message', PAYMENT_SUCCESS_MESSAGE)
     }
 
     if (msg === 'PAYMENT_FAILURE') {
-      io.emit(`/iot/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, PAYMENT_UNSUCCESS_MESSAGE);
+      io.emit(`/ws/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, PAYMENT_UNSUCCESS_MESSAGE);
       io.emit('chat message', PAYMENT_UNSUCCESS_MESSAGE)
     }
 
     if (msg === 'THANK_YOU') {
-      io.emit(`/iot/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, THANK_YOU_MESSAGE);
+      io.emit(`/ws/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, THANK_YOU_MESSAGE);
       io.emit('chat message', THANK_YOU_MESSAGE)
     }
   });
