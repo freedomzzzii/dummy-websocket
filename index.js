@@ -62,6 +62,8 @@ const OUTSTANDING_FEE_MSG = `{
   }
 }`;
 
+const PAYMENT_SUCCESS = ``;
+
 io.on('connection', (socket) => {
   console.log('connected');
   socket.on('chat message', msg => {
@@ -70,8 +72,11 @@ io.on('connection', (socket) => {
     io.emit('chat message', `request message type: ${msg}`);
 
     if (msg === 'OUTSTANDING_FEE') {
-      io.emit(`/iot/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, OUTSTANDING_FEE_MSG);
+      io.emit(`/ws/kiosk-parking-gate?buildingID=ad2dfa7c-7a3d-4b76-a484-690056c97e13&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, OUTSTANDING_FEE_MSG);
       io.emit('chat message', OUTSTANDING_FEE_MSG)
+    } else if (msg === 'PAYMENT_SUCCESS') {
+      io.emit(`/ws/kiosk-parking-gate?buildingID=ad2dfa7c-7a3d-4b76-a484-690056c97e13&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, PAYMENT_SUCCESS);
+      io.emit('chat message', PAYMENT_SUCCESS)
     }
   });
 });

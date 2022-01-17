@@ -19,6 +19,7 @@
     <ul id="messages"></ul>
     <div id="form">
       <button onclick="outstandingFee()">OUTSTANDING_FEE</button>
+      <button onclick="paymentSuccess()">PAYMENT_SUCCESS</button>
       <!-- TODO: message type -->
     </div>
     <script src="/socket.io/socket.io.js"></script>
@@ -32,6 +33,10 @@
 
       function outstandingFee() {
         socket.emit('chat message', 'OUTSTANDING_FEE');
+      }
+
+      function paymentSuccess() {
+        socket.emit('chat message', 'PAYMENT_SUCCESS');
       }
 
       // TODO: add function to emit message type
