@@ -70,6 +70,89 @@ const WELCOME_MESSAGE = `{
   }
 }`
 
+const WELCOME_MEMBER_MESSAGE = `{
+  "data": {
+    "kioskParkingGateInformationType": "WELCOME",
+    "kioskParkingGateInformationPayload": {
+      "parking": {
+        "parkingID": "ae4d5474-8853-47d9-bcd3-1309cedafab5",
+        "buildingID": "ad2dfa7c-7a3d-4b76-a484-690056c97e13",
+        "vehicleID": "91e71521-cd6a-4367-9a75-0b04cfd2bb5e",
+        "customerID": "03ed80f5-5f0a-47f1-bde4-17349018f966",
+        "parkingRefNo": "1001_220107_00001",
+        "parkingGateIn": "IN-01",
+        "parkingTimeIn": "2020-07-05T08:00:00+07:00",
+        "parkingGateOut": null,
+        "parkingTimeOut": null,
+        "parkingTotalParkingTimeMinutes": null,
+        "parkingStatus": "IN",
+        "createdBy": null,
+        "updatedBy": null,
+        "createdAt": "2022-01-07T12:48:37.519675+07:00",
+        "updatedAt": "2022-01-07T12:48:37.519675+07:00",
+        "deletedAt": null
+      },
+      "parkingImage": {
+        "parkingImageID": "4954f587-db55-4552-b0a7-1720dfd37410",
+        "parkingID": "ae4d5474-8853-47d9-bcd3-1309cedafab5",
+        "parkingImageURL": "https://dev-resource-web.s3.ap-southeast-1.amazonaws.com/parking/parking-images/ae4d5474-8853-47d9-bcd3-1309cedafab5.jpg",
+        "createdAt": "2022-01-07T12:48:38.577342+07:00"
+      },
+      "customer": {
+        "customerID": "03ed80f5-5f0a-47f1-bde4-17349018f966",
+        "customerInfo": "",
+        "customerType": "MEMBER",
+        "createdBy": null,
+        "updatedBy": null,
+        "createdAt": "2022-01-07T12:48:37.519675+07:00",
+        "updatedAt": "2022-01-07T12:48:37.519675+07:00",
+        "deletedAt": null
+      },
+      "memberBuilding": {
+        "buildingID": "ad2dfa7c-7a3d-4b76-a484-690056c97e13",
+        "buildingRefNo": "1001",
+        "buildingName": "BHIRAJ TOWER at Sathorn",
+        "buildingInfo": "{\\"buildingAccountingContactNumber\\":null,\\"buildingAddress\\":\\"เลขที่ 33,31 ถนนสาทรใต้ แขวงยานนาวา เขตสาทร กรุงเทพมหานคร 10120\\",\\"buildingCompanyName\\":\\"บ.ภัทรบุรี จำกัด สาขา 00001\\",\\"buildingContactEmail\\":\\"Angkana.M@bhirajburi.co.th\\",\\"buildingContactName\\":\\"Ms. Angkana Manakitkhumtorn\\",\\"buildingContactNumber\\":\\"(084) 6508922\\",\\"buildingIPAddress\\":null,\\"buildingITInformationLink\\":null,\\"buildingPosID\\":\\"E030240002A0606\\",\\"buildingTaxID\\":\\"0105531057368\\"}",
+        "createdBy": "cb4dcdd2-ed6a-4ec8-9ec7-7f362314c30d",
+        "updatedBy": "cb4dcdd2-ed6a-4ec8-9ec7-7f362314c30d",
+        "createdAt": "2020-12-21T17:30:58.230748+07:00",
+        "updatedAt": "2020-12-21T17:30:58.230748+07:00",
+        "deletedAt": null
+      },
+      "tenantMember": {
+        "tenantMemberID": "238ec6dc-7546-42b5-9b3c-c2c2425c3176",
+        "buildingID": "ad2dfa7c-7a3d-4b76-a484-690056c97e13",
+        "tenantID": "b5bb31b3-0b43-47e5-90ff-e0bea6f2ffc9",
+        "customerID": "2b72a4cb-083a-467a-8df7-560369c7a39c",
+        "tenantMemberRefNo": "1001_401_10018",
+        "tenantMemberStartedAt": "2018-05-15T07:00:00+07:00",
+        "tenantMemberExpiredAt": "2021-06-15T07:00:00+07:00",
+        "tenantMemberInfo": "{\\"remark\\":\\"By Agreement : No Charge\\"}",
+        "createdBy": "cb4dcdd2-ed6a-4ec8-9ec7-7f362314c30d",
+        "updatedBy": "af2416c0-aa9c-4009-8b03-f116b85e0cd7",
+        "createdAt": "2020-12-21T17:30:58.230748+07:00",
+        "updatedAt": "2021-06-09T10:57:27.989269+07:00",
+        "deletedAt": null
+      },
+      "vehicle": {
+        "vehicleID": "91e71521-cd6a-4367-9a75-0b04cfd2bb5e",
+        "vehicleType": "CAR",
+        "vehicleBrand": "string",
+        "vehicleModel": "string",
+        "vehicleModelYear": "string",
+        "vehicleColor": "string",
+        "vehicleLicensePlate": "กอ0001",
+        "vehicleProvince": "กรุงเทพมหานคร",
+        "createdBy": null,
+        "updatedBy": null,
+        "createdAt": "2022-01-07T12:48:37.519675+07:00",
+        "updatedAt": "2022-01-07T12:48:37.519675+07:00",
+        "deletedAt": null
+      }
+    }
+  }
+}`
+
 const LPR_ISSUE_IN_MESSAGE = `{
   "data": {
     "kioskParkingGateInformationType": "PARKING_IN_LPR_ISSUE",
@@ -236,6 +319,11 @@ io.on('connection', (socket) => {
     if (msg === 'WELCOME' ) {
       io.emit(`/ws/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, WELCOME_MESSAGE);
       io.emit('chat message', WELCOME_MESSAGE)
+    }
+
+    if (msg === 'WELCOME_MEMBER' ) {
+      io.emit(`/ws/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, WELCOME_MEMBER_MESSAGE);
+      io.emit('chat message', WELCOME_MEMBER_MESSAGE)
     }
 
     if (msg === 'LPR_ISSUE_IN') {

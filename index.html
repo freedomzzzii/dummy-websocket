@@ -18,7 +18,8 @@
   <body>
     <ul id="messages"></ul>
     <div id="form">
-      <button onclick="welcome()">WELCOME</button>
+      <button onclick="welcomeVisitor()">WELCOME_VISITOR</button>
+      <button onclick="welcomeMember()">WELCOME_MEMBER</button>
       <button onclick="lprIssueIn()">LPR_ISSUE_IN</button>
       <button onclick="checkParkingStatusPage()">CHECK_PARKING_STATUS_PAGE</button>
       <button onclick="outstandingFee()">OUTSTANDING_FEE</button>
@@ -36,8 +37,12 @@
       var form = document.getElementById('form');
       var input = document.getElementById('input');
 
-      function welcome() {
+      function welcomeVisitor() {
         socket.emit('chat message', 'WELCOME');
+      }
+
+      function welcomeMember() {
+        socket.emit('chat message', 'WELCOME_MEMBER');
       }
 
       function lprIssueIn() {
