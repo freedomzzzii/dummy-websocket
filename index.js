@@ -337,7 +337,7 @@ io.on('connection', (socket) => {
     }
 
     if (msg === 'OUTSTANDING_FEE') {
-      io.emit(`/ws/kiosk-parking-gate?buildingID=ad2dfa7c-7a3d-4b76-a484-690056c97e13&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, OUTSTANDING_FEE_MSG);
+      io.emit(`/ws/kiosk-parking-gate?buildingID=AAA&kioskParkingGateLocation=IN&kioskParkingGatePosition=01`, OUTSTANDING_FEE_MSG);
       io.emit('chat message', OUTSTANDING_FEE_MSG)
     }
 
